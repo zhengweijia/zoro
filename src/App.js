@@ -4,7 +4,25 @@ import logo from './logo.svg';
 import './App.css';
 import { FcoinWebSocket, FcoinApi } from 'fcoin-nodejs-api';
 
-import Child from "./child/child"
+import {Provider} from 'react-redux';
+import { bindActionCreators, createStore } from "redux";
+
+import Child from "./child/child";
+
+const counter = (state = {count: 1}, action) => {
+  switch (action.type) {
+    case "PLUS_ONE":
+      return { count: state.count + 1 };
+    case "MINUS_ONE":
+      return { count: state.count - 1 };
+    case "CUSTOM_COUNT":
+      return { count: state.count + action.payload.count };
+    default:
+      break;
+  }
+  return state;
+};
+const store = createStore(counter);
 
 class App extends Component {
 
@@ -51,19 +69,22 @@ class App extends Component {
 
 
 		return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-				<ul>
-					<li ></li>
-				</ul>
-				<Child></Child>
-      </div>
+			<Provider store={store}>
+				<div className="App">
+					<header className="App-header">
+						<img src={logo} className="App-logo" alt="logo" />
+						<h1 className="App-title">Welcome to React</h1>
+					</header>
+					<p className="App-intro">
+						To get started, edit <code>src/App.js</code> and save to reload.
+					</p>
+					<ul>
+						<li ></li>
+					</ul>
+					<Child></Child>
+				</div>
+			</Provider>
+      
     );
   }
 }
