@@ -8,7 +8,7 @@ import {Provider} from 'react-redux';
 import { bindActionCreators, createStore } from "redux";
 
 import Child from "./child/child";
-
+import Paste from "./paste/paste";
 const counter = (state = {count: 1}, action) => {
   switch (action.type) {
     case "PLUS_ONE":
@@ -82,6 +82,8 @@ class App extends Component {
 						<li ></li>
 					</ul>
 					<Child></Child>
+
+					<Paste></Paste>
 				</div>
 			</Provider>
       
