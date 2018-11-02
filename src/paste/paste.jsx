@@ -114,8 +114,8 @@ class Paste extends Component {
   render() {
     return (
       <div className="App">
-        {/* <div className='editableDiv' contentEditable="true" onPaste={this.past.bind(this)}  */}
-        <div className='editableDiv' onPaste={this.past.bind(this)} 
+        <div className='editableDiv' contentEditable="true" onPaste={this.past.bind(this)} 
+        // <div className='editableDiv' onPaste={this.past.bind(this)} 
         onDrop={this.drop.bind(this)} onDragEnter={this.drop_handler.bind(this)} onDragOver={this.drop_handler.bind(this)}>
           {this.state.imgList.map(item => (
             <img key={item} src={item} />
